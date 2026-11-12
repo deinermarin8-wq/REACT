@@ -10,6 +10,14 @@ const productos = [
 { id: 9, nombre: 'Manos libres', precio: 90000, categoria: 'Perifericos', stock: 0 },
 { id: 10, nombre: 'Auriculares', precio: 150000, categoria: 'Perifericos', stock: 6 }
 ];
-productos.forEach((producto, indice) => {
-console.log(`${indice + 1}.${producto.nombre}.${producto.precio}.${producto.stock}`);
-}); 
+const nombres = productos.map(producto => producto.nombre);
+console.log(nombres);
+
+const preciosConIva = productos.forEach((producto) => {
+    console.log(`${producto.nombre} con iva cuesta: ${producto.precio * 1.19}`);
+});
+const nombresConMayuscula = productos.map(producto => producto.nombre.toUpperCase());
+console.log(nombresConMayuscula);
+
+const resumenProductos = productos.map(producto => { return `Este producto es un ${producto.nombre} y su precio es de ${producto.precio} pesos.`; });
+console.log(resumenProductos);
