@@ -10,14 +10,11 @@ const productos = [
 { id: 9, nombre: 'Manos libres', precio: 90000, categoria: 'Perifericos', stock: 0 },
 { id: 10, nombre: 'Auriculares', precio: 150000, categoria: 'Perifericos', stock: 6 }
 ];
-const nombres = productos.map(producto => producto.nombre);
-console.log(nombres);
+const mayor = productos.filter(producto => producto.precio > 100000);
+console.log("Productos con precio mayor a 100000:", mayor);
 
-const preciosConIva = productos.forEach((producto) => {
-    console.log(`${producto.nombre} con iva cuesta: ${producto.precio * 1.19}`);
-});
-const nombresConMayuscula = productos.map(producto => producto.nombre.toUpperCase());
-console.log(nombresConMayuscula);
+const entre = productos.filter(producto => producto.precio >= 50000 && producto.precio <= 100000);
+console.log("Productos con precio entre 50000 y 100000:", entre);
 
-const resumenProductos = productos.map(producto => { return `Este producto es un ${producto.nombre} y su precio es de ${producto.precio} pesos.`; });
-console.log(resumenProductos);
+const buscarProducto = productos.find(producto => producto.id === 5);
+console.log("Producto con id 5:", buscarProducto);
