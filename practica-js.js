@@ -10,11 +10,14 @@ const productos = [
 { id: 9, nombre: 'Manos libres', precio: 90000, categoria: 'Perifericos', stock: 0 },
 { id: 10, nombre: 'Auriculares', precio: 150000, categoria: 'Perifericos', stock: 6 }
 ];
-const mayor = productos.filter(producto => producto.precio > 100000);
-console.log("Productos con precio mayor a 100000:", mayor);
-
-const entre = productos.filter(producto => producto.precio >= 50000 && producto.precio <= 100000);
-console.log("Productos con precio entre 50000 y 100000:", entre);
-
-const buscarProducto = productos.find(producto => producto.id === 5);
-console.log("Producto con id 5:", buscarProducto);
+const hayAgotados = productos.some(producto => producto.stock === 0);
+const preciosValidos = productos.every(producto => producto.precio > 0);
+const valorInventario = productos.reduce(
+(total, producto) => total + producto.precio * producto.stock,
+0
+);
+console.log("¿Existe algún producto agotado?", hayAgotados);
+console.log("¿Existe algún producto con precio mayor a $1.000.000?", productos.some(producto => producto.precio > 1000000));
+console.log("¿Todos los productos tienen precio mayor que cero?", preciosValidos);
+console.log("¿Todos los productos tienen stock mayor o igual que cero?", productos.every(producto => producto.stock >= 0));
+console.log("Calcular el valor total del inventario:", valorInventario);
