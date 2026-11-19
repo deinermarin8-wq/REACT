@@ -144,10 +144,6 @@ body {
   margin-bottom: 12px;
 }
 
-.producto-card strong:where(:not(:empty)) {
-  /* The availability label remains readable in both stock states. */
-}
-
 @media (max-width: 640px) {
   .contenedor {
     width: min(100% - 32px, 1120px);
