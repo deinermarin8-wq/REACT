@@ -10,14 +10,39 @@ const productos = [
 { id: 9, nombre: 'Manos libres', precio: 90000, categoria: 'Perifericos', stock: 0 },
 { id: 10, nombre: 'Auriculares', precio: 150000, categoria: 'Perifericos', stock: 6 }
 ];
-const hayAgotados = productos.some(producto => producto.stock === 0);
-const preciosValidos = productos.every(producto => producto.precio > 0);
-const valorInventario = productos.reduce(
-(total, producto) => total + producto.precio * producto.stock,
-0
+
+// 12.1 Template literals
+console.log("\n--- 12.1 Template literals ---");
+console.log(`El producto ${productos[0].nombre} cuesta $${productos[0].precio}`);
+
+// 12.2 Desestructuración
+console.log("\n--- 12.2 Desestructuración ---");
+const { nombre, precio, stock } = productos[0];
+console.log(nombre, precio, stock);
+
+// 12.3 Spread (copia modificando stock sin alterar el original)
+const productoActualizado = {
+  ...productos[0],
+  stock: 8
+};
+
+// 12.4 Operador ternario
+console.log("\n--- 12.4 Operador ternario ---"  );
+const estado = productoActualizado.stock > 0 ? 'Disponible' : 'Agotado';
+console.log(estado);
+
+// TAREA: Copia de un producto cambiando precio y stock sin modificar el original
+// y mostrar una frase usando template literal y operador ternario
+console.log("\n--- Tarea Reto 8 ---" );
+const copiaProducto = {
+  ...productos[2], // Copiamos el Monitor (id: 3, stock original: 0)
+  precio: 420000,
+  stock: 4
+};
+
+console.log(
+  `El producto ${copiaProducto.nombre} ahora tiene un precio de $${copiaProducto.precio} y está ${copiaProducto.stock > 0 ? 'Disponible' : 'Agotado'}`
 );
-console.log("¿Existe algún producto agotado?", hayAgotados);
-console.log("¿Existe algún producto con precio mayor a $1.000.000?", productos.some(producto => producto.precio > 1000000));
-console.log("¿Todos los productos tienen precio mayor que cero?", preciosValidos);
-console.log("¿Todos los productos tienen stock mayor o igual que cero?", productos.every(producto => producto.stock >= 0));
-console.log("Calcular el valor total del inventario:", valorInventario);
+
+// Comprobación de que el producto original en el arreglo no cambió:
+console.log('Original intacto:', productos[2]);
