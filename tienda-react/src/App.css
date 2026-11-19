@@ -1,7 +1,5 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
-
-:root {
-  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+﻿:root {
+  font-family: 'Segoe UI', Arial, sans-serif;
   color: #172033;
   background: #f4f7fb;
   font-synthesis: none;
@@ -18,9 +16,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(ellipse at 8% 0%, rgba(59, 130, 246, 0.09), transparent 34rem),
-    #f4f7fb;
+  background: radial-gradient(ellipse at 8% 0%, rgba(59, 130, 246, 0.09), transparent 34rem), #f4f7fb;
 }
 
 .contenedor {
@@ -29,38 +25,42 @@ body {
   padding: 64px 0 80px;
 }
 
-.contenedor h1 {
+.contenedor > h1 {
   margin: 0 0 28px;
   color: #101828;
-  font-family: 'Manrope', 'Segoe UI', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.05em;
   line-height: 1.15;
 }
 
 .contenedor > p {
   display: inline-flex;
+  width: clamp(220px, 30%, 350px);
   min-height: 76px;
-  min-width: 220px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  margin: 0 14px 32px 0;
-  padding: 15px 20px;
+  align-items: center;
+  margin: 0 14px 28px 0;
+  padding: 16px 20px;
   border: 1px solid #e5eaf2;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.86);
+  background: #fff;
   box-shadow: 0 5px 18px rgba(22, 34, 57, 0.04);
-  color: #64748b;
-  font-size: 0.875rem;
-  font-weight: 500;
+  color: #26364d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
-.contenedor > p::first-line {
-  color: #152238;
-  font-size: 1.25rem;
+.seccion-productos {
+  margin-top: 28px;
+}
+
+.seccion-productos > h2 {
+  margin: 0 0 18px;
+  color: #172033;
+  font-size: 1.4rem;
   font-weight: 700;
+  letter-spacing: -0.035em;
 }
 
 .productos {
@@ -86,9 +86,7 @@ body {
 
 .producto-card::before {
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
+  inset: 0 0 auto;
   height: 3px;
   background: linear-gradient(90deg, #2563eb, #60a5fa);
   content: '';
@@ -109,7 +107,6 @@ body {
 .producto-card h2 {
   margin: 0 0 16px;
   color: #172033;
-  font-family: 'Manrope', 'Segoe UI', sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -122,47 +119,57 @@ body {
   line-height: 1.45;
 }
 
-.producto-card p:nth-of-type(2) {
+.producto-card .producto-precio {
   margin-top: 2px;
   color: #1d4ed8;
   font-size: 1.125rem;
   font-weight: 700;
 }
 
-.producto-card strong {
+.producto-card .estado {
   margin-top: auto;
   padding: 6px 10px;
   border-radius: 999px;
-  background: #eaf8ef;
-  color: #16803c;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.015em;
 }
 
-.producto-card p:last-of-type:has(+ strong) {
-  margin-bottom: 12px;
+.producto-card .estado.disponible {
+  background: #eaf8ef;
+  color: #16803c;
 }
 
-@media (max-width: 640px) {
+.producto-card .estado.agotado {
+  background: #fff0f0;
+  color: #b42318;
+}
+
+@media (max-width: 700px) {
   .contenedor {
     width: min(100% - 32px, 1120px);
     padding: 40px 0 56px;
   }
 
-  .contenedor h1 {
+  .contenedor > h1 {
     margin-bottom: 22px;
   }
 
   .contenedor > p {
-    width: calc(50% - 9px);
+    width: calc(50% - 10px);
     min-width: 0;
-    margin: 0 10px 20px 0;
+    min-height: 72px;
+    margin: 0 12px 14px 0;
     padding: 13px 14px;
+    font-size: 0.85rem;
   }
 
-  .contenedor > p:nth-of-type(2) {
+  .contenedor > p:nth-of-type(even) {
     margin-right: 0;
+  }
+
+  .seccion-productos {
+    margin-top: 22px;
   }
 
   .productos {
@@ -175,11 +182,18 @@ body {
   }
 }
 
+@media (max-width: 420px) {
+  .contenedor > p {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
   }
 }

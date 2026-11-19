@@ -1,13 +1,19 @@
 function ProductoCard({ producto }) {
-const estado = producto.stock > 0 ? 'Disponible' : 'Agotado';
-return (
-<article className="producto-card">
-<h2>{producto.nombre}</h2>
-<p>Categoría: {producto.categoria}</p>
-<p>Precio: ${producto.precio}</p>
-<p>Stock: {producto.stock}</p>
-<strong>{estado}</strong>
-</article>
-);
+  const disponible = producto.stock > 0;
+
+  return (
+    <article className="producto-card">
+      <h2>{producto.nombre}</h2>
+      <p>Categoría: {producto.categoria}</p>
+      <p className="producto-precio">
+        Precio: ${producto.precio.toLocaleString('es-CO')}
+      </p>
+      <p>Stock: {producto.stock}</p>
+      <strong className={disponible ? 'estado disponible' : 'estado agotado'}>
+        {disponible ? 'Disponible' : 'Agotado'}
+      </strong>
+    </article>
+  );
 }
+
 export default ProductoCard;
